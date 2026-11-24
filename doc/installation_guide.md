@@ -22,4 +22,14 @@ Check version:
 ```bash
 java -version
 ```
-""",path:
+
+## PaperMC Installation
+To get the server running with high performance, we'll use PaperMC.
+
+1. **Download**: The PaperMC jar has been placed in `~/src/ai/programacion-minecraft/bin/paper.jar`.
+2. **Run Command**: To start the server, navigate to the bin directory and run:
+   ```bash
+   java -Xms2G -Xmx2G -jar paper.jar --nogui
+   ```
+3. **EULA Agreement**: On first run, it will generate an `eula.txt` file. Open it and change `eula=false` to `eula=true`.
+4. **Restart**: Run the same command again.
