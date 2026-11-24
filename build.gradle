@@ -1,5 +1,7 @@
 plugins {
     id 'java'
+    id 'application'
+    id 'com.github.johnrengelman.shadow' version '8.1.1'
 }
 
 group = 'com.example'
@@ -7,7 +9,9 @@ version = '1.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
-    maven { url = "https://repo.papermc.io/repository/maven-public/" }
+    maven {
+        url = "https://repo.papermc.io/repository/maven-public/"
+    }
 }
 
 java {
@@ -17,8 +21,17 @@ java {
 }
 
 dependencies {
-    implementation 'io.papermc.paper:paper-api:1.21.1-R0.1-SNAPSHOT'
-    testImplementation 'org.junit.jupiter:junit-jupiter:5.9.3'
+    compileOnly 'io.papermc.paper:paper-api:1.21.1-R0.1-SNAPSHOT'
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.10.0'
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+    options.release = 21
+}
+
+shadowJar {
+    archiveClassifier.set('')
 }
 
 test {
