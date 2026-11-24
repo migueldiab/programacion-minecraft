@@ -1,0 +1,12 @@
+Downloading mojang_1.21.11.jar
+Applying patches
+Starting org.bukkit.craftbukkit.Main
+2026-11-24T15:54:26.289812489Z ServerMain WARN Advanced terminal features are not available in this environment
+[09:54:26 INFO]: [bootstrap] Running Java 21 (OpenJDK 64-Bit Server VM 21.0.13.1+2-LTS; Eclipse Adoptium Temurin-21.0.13.1+2) on Linux 6.12.117+deb13-amd64 (amd64)
+[09:54:26 INFO]: [bootstrap] Loading Paper 1.21.11-132-ver/1.21.11@c5eb079 (2026-05-11T11:43:09Z) for Minecraft 1.21.11
+[09:54:26 INFO]: [PluginInitializerManager] Initializing plugins...
+[09:54:26 INFO]: [PluginInitializerManager] Initialized 0 plugins
+[09:54:27 INFO]: [ReobfServer] Remapping server...
+[09:54:33 WARN]: Failed to load eula.txt
+[09:54:33 INFO]: You need to agree to the EULA in order to run the server. Go to eula.txt for more info.
+[09:54:34 INFO]: [ReobfServer] Done remapping server in 7538ms.
