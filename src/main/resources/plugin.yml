@@ -1,0 +1,9 @@
+name: HelloWorld
+version: 1.0
+main: com.example.helloworld.HelloWorld
+api-version: '1.21'
+description: A simple hello world plugin.
+commands:
+  recompensa:
+    description: Get a reward.
+    usage: /recompensa
