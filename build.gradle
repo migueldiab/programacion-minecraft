@@ -7,6 +7,7 @@ version = '1.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
+    maven { url = "https://repo.papermc.io/repository/maven-public/" }
 }
 
 java {
@@ -16,6 +17,7 @@ java {
 }
 
 dependencies {
+    implementation 'io.papermc.paper:paper-api:1.21.1-R0.1-SNAPSHOT'
     testImplementation 'org.junit.jupiter:junit-jupiter:5.9.3'
 }
 
