@@ -11,3 +11,7 @@ Run tests using:
 ```bash
 bundle exec rspec
 ```
+
+### Build System
+Support for Gradle has been added for JVM-based components (Minecraft).
+Build using: `./gradlew build`
