@@ -20,8 +20,9 @@ public class RecompensaCommand implements CommandExecutor {
         }
 
         Player player = (Player) sender;
-        rewardService.grantReward(player);
-        player.sendMessage("§aYou received a reward!");
+        if (rewardService.grantReward(player)) {
+            player.sendMessage("§aYou received a reward!");
+        }
         return true;
     }
 }
