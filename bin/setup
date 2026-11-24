@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+require 'fileutils'
+
+puts "Setting up Minecraft programming environment..."
+# Add setup logic here
