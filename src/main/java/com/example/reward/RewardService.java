@@ -1,26 +1,33 @@
 package com.example.reward;
 
+import com.example.reward.model.PlayerData;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import java.io.*;
 import java.util.*;
-import java.util.concurrent.ConcurrentHashMap;
 
 public class RewardService {
-    private final Map<UUID, Long> lastGrantTimes = new ConcurrentHashMap<>();
+    private final DataManager dataManager;
     private static final long COOLDOWN_MS = 60000; // 60 seconds
+
+    public RewardService() {
+        File dataDir = new File("/home/madrax/src/ai/programacion-minecraft/data");
+        this.dataManager = new DataManager(dataDir);
+    }
 
     public boolean grantReward(Player player) {
         return grantReward(player, "default");
     }
 
     public boolean grantReward(Player player, String mobType) {
+        UUID uuid = player.getUniqueId();
+        PlayerData data = dataManager.getData(uuid);
+        
         long currentTime = System.currentTimeMillis();
-        Long lastTime = lastGrantTimes.get(player.getUniqueId());
-
-        if (lastTime != null && (currentTime - lastTime) < COOLDOWN_MS) {
-            long remaining = (COOLDOWN_MS - (currentTime - lastTime)) / 1000;
+        
+        if ((currentTime - data.lastGrantTime()) < COOLDOWN_MS) {
+            long remaining = (COOLDOWN_MS - (currentTime - data.lastGrantTime())) / 1000;
             player.sendMessage("§cPlease wait " + remaining + " more seconds before claiming another reward.");
             return false;
         }
@@ -42,7 +49,10 @@ public class RewardService {
             }
             process.waitFor();
             
-            lastGrantTimes.put(player.getUniqueId(), System.currentTimeMillis());
+            // Update statistics
+            PlayerData updated = new PlayerData(uuid, currentTime, data.totalRewards() + 1);
+            dataManager.updateAndSave(updated);
+            
             return true;
         } catch (Exception e) {
             e.printStackTrace();

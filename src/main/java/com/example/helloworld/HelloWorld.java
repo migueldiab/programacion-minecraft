@@ -1,5 +1,7 @@
 package com.example.helloworld;
 
+import com.example.reward.RewardService;
+import com.example.reward.listeners.DeathListener;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -16,6 +18,7 @@ public class HelloWorld extends JavaPlugin implements Listener {
         rewardService = new RewardService();
         getCommand("recompensa").setExecutor(new RecompensaCommand(rewardService));
         getServer().getPluginManager().registerEvents(this, this);
+        getServer().getPluginManager().registerEvents(new DeathListener(rewardService), this);
     }
 
     @EventHandler
